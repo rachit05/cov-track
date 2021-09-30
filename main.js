@@ -133,7 +133,7 @@ async function fetchGlobalData() {
             height: 350,
             type: 'radialBar',
         },
-        colors: ['#5EB1BF', '#9B1D20', '#F2AF29'],
+        colors: ['#94ECBE', '#9B1D20', '#F2AF29'],
         series: [globalRecoveryRatio, globalDeathRatio, globalActiveRatio],
         labels: ['Recovery Rate', 'Death Rate', 'Active Cases'],
         stroke: {
@@ -160,7 +160,7 @@ async function fetchGlobalData() {
             gradient: {
                 shade: "dark",
                 type: "vertical",
-                gradientToColors: ['#3185FC', '#E84855', "#F9DC5C"],
+                gradientToColors: ['#4A7856', '#E84855', "#F9DC5C"],
                 stops: [0, 100]
             }
         }
@@ -174,18 +174,45 @@ async function fetchGlobalData() {
 async function fetchAllCountriesData() {
     let allResult = await fetch(allCountries_url);
     let allCounts = await allResult.json();
+    let countries = [];
+    let Totalcases = [];
+    allCounts.filter(res => res.cases > 6000000).forEach(d => {
+        countries.push(d.country);
+        Totalcases.push(d.cases);
+    })
     let data = allCounts.filter(res => res.cases > 6000000).sort((a, b) => b.cases - a.cases).map(res => {
+        
         return `
-            <p class="columns card box has-background-black-bis mt-1">
-                <span class=" column has-text-white-bis">${res.country}</span>
-                <span class=" column has-text-info">${res.cases.toLocaleString('en-IN')}</span>
-                <span class=" column has-text-primary">${res.recovered.toLocaleString('en-IN')}</span>
-                <span class=" column has-text-grey">${res.deaths.toLocaleString('en-IN')}</span>
+            <p class="columns box has-background-black-bis p-0">
+                <span class="column has-text-white-bis">${res.country}</span>
+                <span class="column has-text-info">${res.cases.toLocaleString('en-IN')}</span>
+                <span class="column has-text-primary">${res.recovered.toLocaleString('en-IN')}</span>
+                <span class="column has-text-grey">${res.deaths.toLocaleString('en-IN')}</span>
             </p>
             `;
     }).join('');
 
     countriesCounts.innerHTML = data;
+
+    var options = {
+        chart: {
+            height: 350,
+            type: 'area',
+        },
+        colors: ['#F2AF29'],
+        series: [{
+            name: 'Total Cases',
+            data: Totalcases,
+        }],
+        xaxis: {
+            categories: countries
+        }
+        // labels: ['Recovery Rate', 'Death Rate', 'Active Cases'],
+
+    };
+
+    var chart_mostAffectedCountries = new ApexCharts(document.querySelector("#chartCanvas_mostAffectedCountries"), options);
+    chart_mostAffectedCountries.render();
 }
 
 async function getCountryData(countryName) {
