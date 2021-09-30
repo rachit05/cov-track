@@ -71,12 +71,12 @@ async function getIndianData(state, stateName) {
     } = data[`${state}`];
 
     stateName_display.innerHTML = stateName;
-    stateConfirmed_display.innerHTML = total.recovered;
-    stateActive_display.innerHTML = total.confirmed;
-    stateDeceased_display.innerHTML = total.deceased;
-    stateTests_display.innerHTML = total.tested;
-    stateVac1_display.innerHTML = total.vaccinated1;
-    stateVac2_display.innerHTML = total.vaccinated2;
+    stateConfirmed_display.innerHTML = total.recovered.toLocaleString('en-IN');
+    stateActive_display.innerHTML = total.confirmed.toLocaleString('en-IN');
+    stateDeceased_display.innerHTML = total.deceased.toLocaleString('en-IN');
+    stateTests_display.innerHTML = total.tested.toLocaleString('en-IN');
+    stateVac1_display.innerHTML = total.vaccinated1.toLocaleString('en-IN');
+    stateVac2_display.innerHTML = total.vaccinated2.toLocaleString('en-IN');
 
     lastupdated.innerHTML = new Date(meta.last_updated).toLocaleDateString('en-US', {
         weekday: 'long',
