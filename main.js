@@ -59,7 +59,7 @@ getCovidData('chartCanvas', historical_url);
 function showChart(elem, country, casesObj) {
     // CHART FOR INDIAN STATS   
     let chartOptions = {
-        colors: ['#F2AF29', '#5EB1BF', '#9B1D20'],
+        colors: ['#F2AF29', '#94ECBE', '#9B1D20'],
         chart: {
             height: 280,
             width: "100%",
@@ -82,7 +82,7 @@ function showChart(elem, country, casesObj) {
             data: casesObj.deaths,
         }],
         fill: {
-            colors: ['#F2AF29', '#5EB1BF', '#9B1D20'],
+            colors: ['#F2AF29', '#94ECBE', '#9B1D20'],
         },
         xaxis: {
             type: 'datetime'
@@ -130,7 +130,7 @@ async function fetchGlobalData() {
 
     var options = {
         chart: {
-            height: 350,
+            height: 300,
             type: 'radialBar',
         },
         colors: ['#94ECBE', '#9B1D20', '#F2AF29'],
@@ -196,16 +196,19 @@ async function fetchAllCountriesData() {
 
     var options = {
         chart: {
-            height: 350,
+            height: 280,
             type: 'area',
         },
-        colors: ['#F2AF29'],
+        // colors: ['#F2AF29'],
         series: [{
             name: 'Total Cases',
             data: Totalcases,
         }],
         xaxis: {
             categories: countries
+        },
+        dataLabels:{
+            enabled: false
         }
         // labels: ['Recovery Rate', 'Death Rate', 'Active Cases'],
 

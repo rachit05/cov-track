@@ -16,6 +16,14 @@ td{
     width:fit-content
 }
 
-input.input::placeholder{
-    color: grey;
+svg{
+    width:100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#stateDataDisplay{
+    width:10vw !important
 }

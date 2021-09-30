@@ -19,19 +19,16 @@ td:hover {
   width: fit-content;
 }
 
-input.input::-webkit-input-placeholder {
-  color: grey;
+svg {
+  width: 100%;
 }
 
-input.input:-ms-input-placeholder {
-  color: grey;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-input.input::-ms-input-placeholder {
-  color: grey;
-}
-
-input.input::placeholder {
-  color: grey;
+#stateDataDisplay {
+  width: 10vw !important;
 }
 /*# sourceMappingURL=style.css.map */
