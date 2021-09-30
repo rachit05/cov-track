@@ -1,0 +1,37 @@
+aside .box {
+  border: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+td {
+  vertical-align: inherit !important;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+td:hover {
+  background: #00d1b2;
+  color: white !important;
+}
+
+.fit-size {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+input.input::-webkit-input-placeholder {
+  color: grey;
+}
+
+input.input:-ms-input-placeholder {
+  color: grey;
+}
+
+input.input::-ms-input-placeholder {
+  color: grey;
+}
+
+input.input::placeholder {
+  color: grey;
+}
+/*# sourceMappingURL=style.css.map */

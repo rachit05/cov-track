@@ -1,0 +1,21 @@
+aside{
+    .box{
+        border: 1px solid rgba(0, 0, 0, 0.11);
+    }
+}
+td{
+    vertical-align:inherit !important;
+    transition: all 0.2s;
+    &:hover{
+        background: #00d1b2;
+        color: white !important;
+    }
+}
+
+.fit-size{
+    width:fit-content
+}
+
+input.input::placeholder{
+    color: grey;
+}
