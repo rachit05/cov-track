@@ -31,4 +31,8 @@ svg {
 #stateDataDisplay {
   width: 10vw !important;
 }
+
+section {
+  overflow: hidden !important;
+}
 /*# sourceMappingURL=style.css.map */

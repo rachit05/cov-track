@@ -241,3 +241,5 @@ async function getCountryData(countryName) {
                 <small>The <span class="has-text-info">Active cases ratio</span> is approximately <span class="has-text-info">${Math.round((active/cases)*100)}%</span> in India</small>
                 `;
 }
+
+
