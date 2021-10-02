@@ -114,7 +114,7 @@ async function getIndianData(state, stateName) {
                 },
             });
         }).then(data => {
-        updateCount++;
+            updateCount++;
 
             console.log(updateCount)
             updateCount == 1 ? getHAS(data, false) : getHAS(data, true);
@@ -128,19 +128,19 @@ getIndianData('MP', "Madhya Pradesh");
 async function getHAS(data, isUpdate) {
     let options = {
         series: [{
+            type: 'line',
             name: data.confirmed.name,
             data: data.confirmed.data,
         }],
         chart: {
             id: 'topStatesMap',
-            type: 'line',
             height: 350,
         },
-        plotOptions: {
-            bar: {
-                borderRadius: 10,
-
-            }
+        stroke: {
+            curve: 'smooth',
+        },
+        markers: {
+            size: 2,
         },
         responsive: [{
             breakpoint: 480,
@@ -164,14 +164,14 @@ async function getHAS(data, isUpdate) {
 
     };
 
-    
-    
+
+
     if (!isUpdate) {
         let chart = new ApexCharts(document.querySelector("#topStatesMap"), options);
         chart.render()
     } else {
         console.log(data.confirmed)
-        ApexCharts.exec("topStatesMap","updateOptions",{
+        ApexCharts.exec("topStatesMap", "updateOptions", {
             series: [{
                 data: data.confirmed.data,
             }],

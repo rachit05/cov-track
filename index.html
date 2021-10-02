@@ -8,27 +8,33 @@
     <title>Covid Tracker</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- <link href='https://css.gg/css' rel='stylesheet'> -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script> -->
-    
 </head>
 
 <body class=" has-background-black">
 
-    <header class="navbar py-6 has-background-link-light">
+    <header class="navbar py-6 has-background-link">
         <div class="container">
             <span class="navbar-item">
-                <strong class="is-size-4 has-text-link">CovTrack.</strong>
+                <strong class="is-size-4 has-text-white">CovTrack.</strong>
             </span>
             <div id="navbarMenuHeroC" class="navbar-menu">
                 <div class="navbar-end">
                     <li class="navbar-item">
-                        <button class="button is-light is-primary">Home</button>
+                        <button class="button is-link">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                        </button>
                     </li>
                     <li class="navbar-item">
-                        <button class="button is-light is-link">Timeline</button>
+                        <button class="button is-link">
+                            <span class="icon">
+                                <ion-icon name="stats-chart-outline"></ion-icon>
+                            </span>
+                        </button>
                     </li>
                 </div>
             </div>
@@ -60,8 +66,9 @@
         </div>
     </section> -->
     <section class="section p-6 has-background-primary-light">
-        <div class="box mt-6 tag has-background-black-bis is-medium p-6">
-            <strong class="has-text-grey">COVID-19 Data for Indian States</strong>
+        <div class="box mt-6 columns tag has-background-black-bis is-medium p-6">
+            <strong class="column has-text-grey is-7">COVID-19 Data for Indian States</strong>
+            <strong class="column has-text-white" id="stateName_display"></strong>
         </div>
         <div class="container columns">
             <div id="mapDiv" class="column is-7" style="height:100vh">
@@ -77,13 +84,13 @@
                                 stroke-width: 1;
                             }
                         </style>
-    
+
                         <amcharts:ammap projection="mercator" leftLongitude="68.183544" topLatitude="37.053723"
                             rightLongitude="97.419080" bottomLatitude="6.751085"></amcharts:ammap>
-    
+
                         <!-- All areas are listed in the line below. You can use this list in your script. -->
                         <!--{id:"IN-AN"},{id:"IN-AP"},{id:"IN-AR"},{id:"IN-AS"},{id:"IN-BR"},{id:"IN-CH"},{id:"IN-CT"},{id:"IN-DD"},{id:"IN-DL"},{id:"IN-DN"},{id:"IN-GA"},{id:"IN-GJ"},{id:"IN-HP"},{id:"IN-HR"},{id:"IN-JH"},{id:"IN-JK"},{id:"IN-KA"},{id:"IN-KL"},{id:"IN-LD"},{id:"IN-MH"},{id:"IN-ML"},{id:"IN-MN"},{id:"IN-MP"},{id:"IN-MZ"},{id:"IN-NL"},{id:"IN-OR"},{id:"IN-PB"},{id:"IN-PY"},{id:"IN-RJ"},{id:"IN-SK"},{id:"IN-TG"},{id:"IN-TN"},{id:"IN-TR"},{id:"IN-UP"},{id:"IN-UT"},{id:"IN-WB"}-->
-    
+
                     </defs>
                     <g>
                         <path onmouseoutid="IN-AN" id="IN-AN" title="Andaman and Nicobar Islands" class="land"
@@ -161,11 +168,11 @@
                     </g>
                 </svg>
             </div>
-    
+
             <div class="column">
-                
-                <div class="is-size-2 box card has-text-centered mb-6" id="stateName_display"></div>
-    
+
+
+
                 <div class="columns container mt-2">
                     <div class="has-text-centered column mb-1 py-6 px-2 has-background-danger-light box card">
                         <p class="is-size-4  has-text-centered has-text-danger" id="stateActive_display"></p>
@@ -181,7 +188,7 @@
                     </div>
                 </div>
                 <div class="columns container mt-4">
-    
+
                     <div class="has-text-centered column mb-1 py-6 px-2 has-background-warning-light card box">
                         <p class="is-size-4  has-text-centered has-text-warning" id="stateTests_display"></p>
                         <p class="tag has-background-warning has-text-black">Total Tests</p>
@@ -199,7 +206,7 @@
                 <div class="columns container mt-4 card">
                     <div class="column" id="topStatesMap"></div>
                 </div>
-    
+
                 <p class="is-size-6 mt-6 has-text-centered">Last updated on <strong class="has-text-grey-dark"
                         id="lastupdated">Sept 23, 2021</strong></p>
             </div>
@@ -316,6 +323,9 @@
     <script src="//cdn.amcharts.com/lib/4/maps.js"></script>
     <script src="//cdn.amcharts.com/lib/4/geodata/worldLow.js"></script>
     <script src="./apexcharts-bundle/dist/apexcharts.min.js" defer></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script src="main.js"></script>
     <script src="maps.js"></script>
