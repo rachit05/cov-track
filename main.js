@@ -63,7 +63,7 @@ function showChart(elem, country, casesObj) {
         colors: ['#F2AF29', '#94ECBE', '#9B1D20'],
         chart: {
             id: 'chartCanvas',
-            height: '100%',
+            height: window.innerWidth > 800 ? '100%' : '280px',
             width: "100%",
             type: "area",
             animations: {
@@ -137,7 +137,7 @@ async function fetchGlobalData() {
 
     var options = {
         chart: {
-            height: '100%',
+            height: window.innerWidth > 800 ? '100%' : '280px',
             type: 'radialBar',
         },
         colors: ['#94ECBE', '#9B1D20', '#F2AF29'],
@@ -203,7 +203,7 @@ async function fetchAllCountriesData() {
 
     var options = {
         chart: {
-            height: '100%',
+            height: window.innerWidth > 800 ? '100%' : '300px',
             type: 'area',
         },
         // colors: ['#F2AF29'],

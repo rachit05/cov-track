@@ -132,7 +132,7 @@ async function getHAS(data, isUpdate) {
         }],
         chart: {
             id: 'topStatesMap',
-            height: 350,
+            height: window.innerWidth > 800 ? '100%' : '280px',
         },
         stroke: {
             curve: 'smooth',
