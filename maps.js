@@ -115,8 +115,6 @@ async function getIndianData(state, stateName) {
             });
         }).then(data => {
             updateCount++;
-
-            console.log(updateCount)
             updateCount == 1 ? getHAS(data, false) : getHAS(data, true);
         })
         // getHAS(result)
@@ -170,7 +168,6 @@ async function getHAS(data, isUpdate) {
         let chart = new ApexCharts(document.querySelector("#topStatesMap"), options);
         chart.render()
     } else {
-        console.log(data.confirmed)
         ApexCharts.exec("topStatesMap", "updateOptions", {
             series: [{
                 data: data.confirmed.data,

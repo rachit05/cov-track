@@ -22,6 +22,7 @@
             </span>
             <div id="navbarMenuHeroC" class="navbar-menu">
                 <div class="navbar-end">
+                    
                     <li class="navbar-item">
                         <button class="button is-link">
                             <span class="icon">
@@ -41,15 +42,16 @@
         </div>
     </header>
     <section class="hero is-medium is-link">
+        
         <div class="hero-body columns">
             <div class="column">
                 <h1 class="title is-size-1 has-text-white">
-                    THE ONLY WAY TO PROTECT <strong class="has-text-info">YOUSELF</strong> AND YOUR <strong
+                    THE ONLY WAY TO PROTECT <strong class="has-text-info">YOURSELF</strong> AND YOUR <strong
                         class="has-text-danger">LOVED ONES</strong> IS TO GET <strong
                         class="has-text-primary">VACCINATED</strong>.
                 </h1>
                 <h4 class="subtitle is-size-4 mt-6">
-                    Wear a mask whenever you go outside and help eachother to fight this pandemic together.
+                    Wear a mask whenever you go outside and help each other to fight this pandemic.
                 </h4>
             </div>
 
@@ -66,6 +68,7 @@
         </div>
     </section> -->
     <section class="section p-6 has-background-primary-light">
+        
         <div class="box mt-6 columns tag has-background-black-bis is-medium p-6">
             <strong class="column has-text-grey is-7">COVID-19 Data for Indian States</strong>
             <strong class="column has-text-white" id="stateName_display"></strong>
@@ -170,9 +173,6 @@
             </div>
 
             <div class="column">
-
-
-
                 <div class="columns container mt-2">
                     <div class="has-text-centered column mb-1 py-6 px-2 has-background-danger-light box card">
                         <p class="is-size-4  has-text-centered has-text-danger" id="stateActive_display"></p>
@@ -213,20 +213,27 @@
         </div>
     </section>
     <section class="py-6">
-        <section class="hero has-background-black">
+        <section class="hero">
             <div class="hero-head">
                 <div class="section columns">
                     <div class="column"></div>
-                    <div class="wrapper column">
-                        <input type="text" class="input is-large has-background-dark is-dark has-text-white mb-4">
-                        <label for="">Search For Country</label>
-
+                    <div class="wrapper column field">
+                        <div class="control has-icons-left is-medium">
+                            <input id="searchCountryInput" style="text-transform: capitalize;" type="text" class="input is-large has-background-dark is-dark has-text-white mb-4">
+                            <span class="icon is-left has-text-grey">
+                                <ion-icon name="search-sharp"></ion-icon>
+                            </span>
+                        </div>
+                        <div class="columns">
+                            <label class="column" for="">Search For Any Country</label>
+                            <label id="searchingLoaderText" style="text-align: right;" class="column" for=""></label>
+                        </div>
+                        <div class="columns is-multiline" id="searchResult"></div>   
                     </div>
                     <div class="column"></div>
                 </div>
             </div>
             <div class="hero-body section columns">
-
                 <aside class="column">
                     <!-- CHART FOR INDIAN STATS  -->
                     <div class="container px-0 has-text-centered">

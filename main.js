@@ -1,9 +1,11 @@
 // const base_url = 'https://covid-api.mmediagroup.fr/v1/history?country=India&status=';
+// const countryName_url = `http://api.countrylayer.com/v2/name/value?access_key=dfc3ec643eccf49204ddc3fb7015cc36`;
 const historical_url = 'https://corona.lmao.ninja/v2/historical/India?lastdays=500';
 const base_url = 'https://corona.lmao.ninja/v2/countries/';
 const global_url = 'https://corona.lmao.ninja/v2/all?yesterday';
 const allCountries_url = 'https://corona.lmao.ninja/v2/countries?yesterday&sort';
 
+const searchCountryInput = document.querySelector('#searchCountryInput');
 
 const globalCaseCount = document.querySelector('#globalCaseCount');
 const globalActiveCaseCount = document.querySelector('#globalActiveCaseCount');
@@ -181,7 +183,7 @@ async function fetchAllCountriesData() {
         Totalcases.push(d.cases);
     })
     let data = allCounts.filter(res => res.cases > 6000000).sort((a, b) => b.cases - a.cases).map(res => {
-        
+
         return `
             <p class="columns box has-background-black-bis p-0">
                 <span class="column has-text-white-bis">${res.country}</span>
@@ -207,7 +209,7 @@ async function fetchAllCountriesData() {
         xaxis: {
             categories: countries
         },
-        dataLabels:{
+        dataLabels: {
             enabled: false
         }
         // labels: ['Recovery Rate', 'Death Rate', 'Active Cases'],
@@ -243,3 +245,35 @@ async function getCountryData(countryName) {
 }
 
 
+let typingTimer;
+searchCountryInput.addEventListener('keyup', e => {
+    let {
+        value
+    } = e.target;
+
+    if (value.length >= 3) {
+        document.getElementById('searchingLoaderText').innerHTML = 'Searching...';
+        document.getElementById('searchingLoaderText').classList.add('visible');
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(fetchData, 1000, value);
+    } else {
+        document.getElementById('searchingLoaderText').classList.remove('visible')
+        document.getElementById('searchResult').innerHTML = ''
+    }
+})
+
+let fetchData = async (value) => {
+    // let countriesName_url = `http://api.countrylayer.com/v2/name/${value}?access_key=dfc3ec643eccf49204ddc3fb7015cc36`;
+    let countriesName_url = `./json/countries.json`;
+    let result = await fetch(countriesName_url);
+    let data = await result.json();
+    let countryNames = await data.filter(country => country.name.toLowerCase().startsWith(`${value}`)).map(country => `<span class="tag is-medium column mr-3 mb-3 has-background-black-bis">${country.name}</span>`);
+
+    if(countryNames.length){
+        document.getElementById('searchResult').innerHTML = countryNames.join('')
+        document.getElementById('searchingLoaderText').innerHTML = 'Done';
+    }else{
+        document.getElementById('searchingLoaderText').innerHTML = 'No Record Found!';
+    }
+    
+}

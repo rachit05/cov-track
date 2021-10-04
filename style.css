@@ -35,4 +35,16 @@ svg {
 section {
   overflow: hidden !important;
 }
+
+#searchingLoaderText {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#searchingLoaderText.visible {
+  visibility: visible;
+  opacity: 1;
+}
 /*# sourceMappingURL=style.css.map */
