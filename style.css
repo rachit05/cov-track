@@ -47,4 +47,10 @@ section {
   visibility: visible;
   opacity: 1;
 }
+
+.searchedCountryTag:hover {
+  color: black;
+  background: white !important;
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */

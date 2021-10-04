@@ -1,6 +1,6 @@
 // const base_url = 'https://covid-api.mmediagroup.fr/v1/history?country=India&status=';
 // const countryName_url = `http://api.countrylayer.com/v2/name/value?access_key=dfc3ec643eccf49204ddc3fb7015cc36`;
-const historical_url = 'https://corona.lmao.ninja/v2/historical/India?lastdays=500';
+const historical_url = 'https://corona.lmao.ninja/v2/historical/';
 const base_url = 'https://corona.lmao.ninja/v2/countries/';
 const global_url = 'https://corona.lmao.ninja/v2/all?yesterday';
 const allCountries_url = 'https://corona.lmao.ninja/v2/countries?yesterday&sort';
@@ -19,12 +19,12 @@ const countriesCounts = document.querySelector('#countriesCounts');
 
 const globalDataSummary = document.querySelector('#globalDataSummary');
 
-async function getCovidData(canvas, url) {
+async function getCovidData(canvas,countryName, url) {
     fetchGlobalData();
     fetchAllCountriesData();
-    getCountryData('India');
+    getCountryData(countryName);
 
-    let data = await fetch(url);
+    let data = await fetch(url + countryName + "?lastdays=500");
     let result = await data.json();
 
     let {
@@ -53,36 +53,26 @@ async function getCovidData(canvas, url) {
             };
         })
     };
-    showChart(canvas, 'India', allCases);
+    showChart(canvas, countryName, allCases);
 }
 
-getCovidData('chartCanvas', historical_url);
+getCovidData('chartCanvas','India', historical_url);
 
 function showChart(elem, country, casesObj) {
-    // CHART FOR INDIAN STATS   
     let chartOptions = {
         colors: ['#F2AF29', '#94ECBE', '#9B1D20'],
         chart: {
-            height: 280,
+            id: 'chartCanvas',
+            height: '100%',
             width: "100%",
             type: "area",
             animations: {
                 initialAnimation: {
-                    enabled: false
+                    enabled: true
                 }
             }
         },
-        series: [{
-            name: 'Total',
-            data: casesObj.total,
-
-        }, {
-            name: 'Recovered',
-            data: casesObj.recovered,
-        }, {
-            name: 'Deaths',
-            data: casesObj.deaths,
-        }],
+        series: [],
         fill: {
             colors: ['#F2AF29', '#94ECBE', '#9B1D20'],
         },
@@ -104,6 +94,21 @@ function showChart(elem, country, casesObj) {
     };
     let chart = new ApexCharts(document.querySelector(`#${elem}`), chartOptions);
     chart.render();
+    
+    ApexCharts.exec(`${elem}`, "updateOptions", {
+        series: [{
+            name: 'Total',
+            data: casesObj.total,
+            
+        }, {
+            name: 'Recovered',
+            data: casesObj.recovered,
+        }, {
+            name: 'Deaths',
+            data: casesObj.deaths,
+        }],
+    }, false, true);
+    
 }
 
 
@@ -132,7 +137,7 @@ async function fetchGlobalData() {
 
     var options = {
         chart: {
-            height: 300,
+            height: '100%',
             type: 'radialBar',
         },
         colors: ['#94ECBE', '#9B1D20', '#F2AF29'],
@@ -185,7 +190,7 @@ async function fetchAllCountriesData() {
     let data = allCounts.filter(res => res.cases > 6000000).sort((a, b) => b.cases - a.cases).map(res => {
 
         return `
-            <p class="columns box has-background-black-bis p-0">
+            <p class="columns is-mobile box has-background-black-bis p-0">
                 <span class="column has-text-white-bis">${res.country}</span>
                 <span class="column has-text-info">${res.cases.toLocaleString('en-IN')}</span>
                 <span class="column has-text-primary">${res.recovered.toLocaleString('en-IN')}</span>
@@ -198,7 +203,7 @@ async function fetchAllCountriesData() {
 
     var options = {
         chart: {
-            height: 280,
+            height: '100%',
             type: 'area',
         },
         // colors: ['#F2AF29'],
@@ -221,6 +226,7 @@ async function fetchAllCountriesData() {
 }
 
 async function getCountryData(countryName) {
+    console.log(countryName);
     let data = await fetch(base_url + countryName);
     let result = await data.json();
     let {
@@ -236,11 +242,11 @@ async function getCountryData(countryName) {
     document.getElementById('IndianDeathCount').innerHTML = deaths.toLocaleString('en-IN');
 
     document.getElementById('IndianDataSummary').innerHTML = `
-                <small>The <span class="has-text-primary">recovery rate</span> is approximately <span class="has-text-primary">${Math.round((recovered/cases)*100)}%</span> in India</small><br>
+                <small>The <span class="has-text-primary">recovery rate</span> is approximately <span class="has-text-primary">${Math.round((recovered/cases)*100)}%</span> in ${countryName}</small><br>
 
-                <small>The <span class="has-text-danger">death rate</span> is approximately <span class="has-text-danger">${Math.round((deaths/cases)*100)}%</span> in India</small><br>
+                <small>The <span class="has-text-danger">death rate</span> is approximately <span class="has-text-danger">${Math.round((deaths/cases)*100)}%</span> in ${countryName}</small><br>
                 
-                <small>The <span class="has-text-info">Active cases ratio</span> is approximately <span class="has-text-info">${Math.round((active/cases)*100)}%</span> in India</small>
+                <small>The <span class="has-text-info">Active cases ratio</span> is approximately <span class="has-text-info">${Math.round((active/cases)*100)}%</span> in ${countryName}</small>
                 `;
 }
 
@@ -267,13 +273,23 @@ let fetchData = async (value) => {
     let countriesName_url = `./json/countries.json`;
     let result = await fetch(countriesName_url);
     let data = await result.json();
-    let countryNames = await data.filter(country => country.name.toLowerCase().startsWith(`${value}`)).map(country => `<span class="tag is-medium column mr-3 mb-3 has-background-black-bis">${country.name}</span>`);
+    let countryNames = await data.filter(country => country.name.toLowerCase().startsWith(`${value}`)).map(country => `<span class="searchedCountryTag tag is-medium column mr-3 mb-3 has-background-black-bis">${country.name}</span>`);
 
     if(countryNames.length){
         document.getElementById('searchResult').innerHTML = countryNames.join('')
         document.getElementById('searchingLoaderText').innerHTML = 'Done';
+
+        let searchedItems = document.querySelectorAll('.searchedCountryTag');
+        searchedItems.forEach(item => item.addEventListener('click',handleSearchItemEvent));
+
     }else{
         document.getElementById('searchingLoaderText').innerHTML = 'No Record Found!';
     }
     
+}
+
+
+async function handleSearchItemEvent(e){
+    let {innerText} = e.target;
+    await getCovidData('chartCanvas',innerText, historical_url);
 }
