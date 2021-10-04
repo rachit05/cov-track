@@ -12,6 +12,29 @@ td{
     }
 }
 
+#landing{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    top:0;
+    background-image: url(./illustrations/covidBG.jpg);
+    background-size: cover;
+    z-index: -1;
+    background-attachment: fixed;
+    &::after{
+        position: absolute;
+        content: "";
+        width:100%;
+        height: 100%;
+
+        top:0%;
+        left:0%;
+
+        backdrop-filter: blur(5px);
+
+    }
+}
+
 .fit-size{
     width:fit-content
 }

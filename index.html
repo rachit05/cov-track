@@ -13,16 +13,15 @@
 
 </head>
 
-<body class=" has-background-black">
+<body>
 
-    <header class="navbar py-6 has-background-link">
-        <div class="container">
+    <header class="navbar section py-6" style="background:transparent">
+        <!-- <section class="container"> -->
             <span class="navbar-item">
-                <strong class="is-size-4 has-text-white">Trackovid-19</strong>
+                <strong class="is-size-4 has-text-link has-background-link-light box">Trackovid-19</strong>
             </span>
             <div id="navbarMenuHeroC" class="navbar-menu">
                 <div class="navbar-end">
-                    
                     <li class="navbar-item">
                         <button class="button is-link">
                             <span class="icon">
@@ -39,10 +38,9 @@
                     </li>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </header>
-    <section class="hero is-medium is-link">
-        
+    <section class="hero is-medium is-link" style="position:relative;">
         <div class="hero-body columns">
             <div class="column">
                 <h1 class="title is-size-1 has-text-white">
@@ -50,7 +48,7 @@
                         class="has-text-danger">LOVED ONES</strong> IS TO GET <strong
                         class="has-text-primary">VACCINATED</strong>.
                 </h1>
-                <h4 class="subtitle is-size-4 mt-6">
+                <h4 class="subtitle is-size-4 mt-6 ">
                     Wear a mask whenever you go outside and help each other to fight this pandemic.
                 </h4>
             </div>
@@ -58,15 +56,6 @@
             <img class="image" src="./illustrations/SVGs/health-doctor-vaccine.svg" width="600" alt="">
         </div>
     </section>
-    <!-- <section class="hero is-medium is-primary">
-        <div class="hero-body has-text-centered">
-            
-            <img class="image" src="./illustrations/SVGs/health-vitamins-suplements.svg"  alt="">
-            <h1 class="title is-size-1 mt-6">
-                BELOW IS THE DATA FOR COVID-19 CASES<br>ACROSS THE GLOBE
-            </h1>
-        </div>
-    </section> -->
     <section class="section p-6 has-background-primary-light">
         
         <div class="box mt-6 columns tag has-background-black-bis is-medium p-6">
@@ -212,7 +201,10 @@
             </div>
         </div>
     </section>
+ 
+ 
     <section class="py-6">
+
         <section class="hero">
             <div class="hero-head">
                 <div class="section columns">
@@ -233,7 +225,7 @@
                     <div class="column"></div>
                 </div>
             </div>
-            <aside class="columns section">
+            <aside class="hero-body columns">
                 <!-- CHART FOR INDIAN STATS  -->
                 <div class="column">
                     <h2 class="columns fit-size p-5 is-size-6 has-background-black-bis">
@@ -243,39 +235,36 @@
                     <div class="columns p-3 has-background-black-bis">
                         <div class="column has-background-black-bis" id="chartCanvas"></div>
                         <!-- BLOCK FOR INDIAN CASES INFORMATION - TEXTUAL -->
-                        <div class="column has-background-black column">
+                        <div class="column has-background-black">
                             <div class="columns p-3">
                                 <h2 class="column py-4 is-full-mobile is-half-desktop has-text-centered box is-size-6  has-background-black-bis">
                                     <strong class="has-text-danger">Total Confirmed Cases -</strong>
                                     <strong><span class="has-text-link tag has-background-danger-light has-text-danger" id="IndianCaseCount"></span></strong>
                                 </h2>
                             </div>
-                            <div class="box p-3 has-background-black">
-                                <ul class="columns">
-                                    <li class="column my-0 has-text-centered mr-2 has-background-black-bis box">
-                                        <p class="py-0">
-                                            <strong class="has-text-info is-size-5" id="IndianActiveCaseCount"></strong>
-                                        </p>
-                                        <p class="py-0 has-text-white tag is-link is-medium mt-3">Active Cases</p>
-                                    </li>
-                                    <li class="column my-0 has-text-centered mr-2 has-background-black-bis box">
-                                        <p class="py-0 ">
-                                            <strong class="has-text-primary is-size-5" id="IndianRecoveredCount"></strong>
-                                        </p>
-                                        <p class="has-text-white py-0 tag is-medium mt-3 is-primary">Recovered Cases</p>
-                                    </li>
-                                    <li class="column my-0 has-text-centered  mr-2 has-background-black-bis box">
-                                        <p class="py-0">
-                                            <strong class="has-text-danger is-size-5" id="IndianDeathCount"></strong>
-                                        </p>
-                                        <p class="has-text-white tag is-danger is-medium mt-3 py-0">Deaths Cases</p>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="my-4">
+                                <li class="columns is-mobile my-0">
+                                    <span class="column py-0 has-text-white">Active Cases</span>
+                                    <span class="column py-0" style="text-align: right;">
+                                        <strong class="has-text-info" id="IndianActiveCaseCount"></strong>
+                                    </span>
+                                </li>
+                                <li class="columns is-mobile my-0">
+                                    <span class="column has-text-white py-0">Recovered Cases</span>
+                                    <span class="column py-0 " style="text-align: right;">
+                                        <strong class="has-text-primary" id="IndianRecoveredCount"></strong>
+                                    </span>
+                                </li>
+                                <li class="columns is-mobile my-0">
+                                    <span class="column has-text-white py-0">Deaths Cases</span>
+                                    <span class="column py-0" style="text-align: right;">
+                                        <strong class="has-text-danger" id="IndianDeathCount"></strong>
+                                    </span>
+                                </li>
+                            </ul>
                             <div class="box has-background-black-bis has-text-centered">
                                 <p class="is-size-5 has-background-black-bis box" id="IndianDataSummary"></p>
                             </div>
-        
                         </div>
                     </div>
                 </div>
@@ -290,33 +279,36 @@
                     </h2>
                     <div class="columns p-3 has-background-black-bis">
                         <div class="column" id="chartCanvas_global"></div>
-                        <div class="column">
+                        <div class="column has-background-black">
+                            <p class="column py-4 is-full-mobile is-half-desktop has-text-centered box is-size-6  has-background-black-bis">
+                                <strong class="has-text-danger">Total Confirmed Cases - </strong>
+                                <strong><span class="has-text-link tag has-background-danger-light has-text-danger"  id="globalCaseCount"></span></strong>
+                            </p>
     
-                            <p class=""><strong class="has-text-grey-light is-size-7">TOTAL CONFIRMED CASES</strong></p>
-                            <p class="title has-text-link mt-2 is-size-4" id="globalCaseCount"></p>
-    
-                            <ul class="mt-4">
+                            <ul class="my-4">
                                 <li class="columns is-mobile my-0">
                                     <span class="column py-0 has-text-white">Active Cases</span>
-                                    <span class="column py-0">
+                                    <span class="column py-0" style="text-align: right;">
                                         <strong class="has-text-info" id="globalActiveCaseCount"></strong>
                                     </span>
                                 </li>
                                 <li class="columns is-mobile my-0">
                                     <span class="column has-text-white py-0">Recovered Cases</span>
-                                    <span class="column py-0 ">
+                                    <span class="column py-0 " style="text-align: right;">
                                         <strong class="has-text-primary" id="globalRecoveredCount"></strong>
                                     </span>
                                 </li>
                                 <li class="columns is-mobile my-0">
                                     <span class="column has-text-white py-0">Deaths Cases</span>
-                                    <span class="column py-0">
+                                    <span class="column py-0" style="text-align: right;">
                                         <strong class="has-text-danger" id="globalDeathCount"></strong>
                                     </span>
                                 </li>
                             </ul>
+                            <div class="box has-background-black-bis has-text-centered">
+                                <p class="is-size-5 has-background-black-bis box" id="globalDataSummary"></p>
+                            </div>
     
-                            <p class="mt-5" id="globalDataSummary"></p>
                         </div>
                     </div>
                 </div>
@@ -327,7 +319,15 @@
                 </h2>
                 <div class="columns p-3 has-background-black-bis">
                     <div class="column" id="chartCanvas_mostAffectedCountries"></div>
-                    <div class="column" id="countriesCounts"></div>
+                    <div class="column">
+                        <p class="columns is-mobile box has-background-black p-0">
+                            <span class="column has-text-white-bis">Country</span>
+                            <span class="column has-text-info">Total</span>
+                            <span class="column has-text-primary">Recovered</span>
+                            <span class="column has-text-grey">Deceased</span>
+                        </p>
+                        <div id="countriesCounts"></div>
+                    </div>
                 </div>
             </div>
         </section>
