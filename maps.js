@@ -24,7 +24,8 @@
 
 // // Make map load polygon (like country names) data from GeoJSON
 // polygonSeries.useGeodata = true;
-const stateName_display = document.getElementById('stateName_display');
+const stateName_display_desktop = document.getElementById('stateName_display_desktop');
+const stateName_display_mobile = document.getElementById('stateName_display_mobile');
 const statedeceased_display = document.getElementById('stateConfirmed_display');
 const stateActive_display = document.getElementById('stateActive_display');
 const stateDeceased_display = document.getElementById('stateDeceased_display');
@@ -79,7 +80,8 @@ async function getIndianData(state, stateName) {
         districts
     } = await data[`${state}`];
     highlyAffectedStates = Object.entries(districts).filter(arr => arr[1].total.confirmed > 20000);
-    stateName_display.innerHTML = stateName;
+    stateName_display_desktop.innerHTML = stateName;
+    stateName_display_mobile.innerHTML = stateName;
     stateConfirmed_display.innerHTML = total.recovered.toLocaleString('en-IN');
     stateActive_display.innerHTML = total.confirmed.toLocaleString('en-IN');
     stateDeceased_display.innerHTML = total.deceased.toLocaleString('en-IN');

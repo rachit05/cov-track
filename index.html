@@ -58,10 +58,14 @@
     </section>
     <section class="section p-6 has-background-primary-light">
         
-        <div class="box mt-6 columns tag has-background-black-bis is-medium p-6">
-            <strong class="column is-hidden-mobile has-text-grey is-7">COVID-19 Data for Indian States</strong>
-            <strong class="column has-text-white" id="stateName_display"></strong>
+        <div class="box mt-6 columns is-hidden-mobile is-hidden-tablet tag has-background-black-bis is-medium p-6">
+            <strong class="column has-text-grey is-7">COVID-19 Data for Indian States</strong>
+            <strong class="column has-text-white" id="stateName_display_desktop"></strong>
         </div>
+        
+        <div class="box has-background-black-bis has-text-white has-text-centered is-hidden-desktop" id="stateName_display_mobile"></div>
+
+        
         <div class="container columns">
             <figure id="mapDiv" class="column is-7 is-hidden-mobile" style="height: 100vh;">
                 <svg style="overflow:visible" xmlns="http://www.w3.org/2000/svg"
