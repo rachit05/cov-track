@@ -226,7 +226,6 @@ async function fetchAllCountriesData() {
 }
 
 async function getCountryData(countryName) {
-    console.log(countryName);
     let data = await fetch(base_url + countryName);
     let result = await data.json();
     let {

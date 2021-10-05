@@ -133,6 +133,7 @@ async function getHAS(data, isUpdate) {
         chart: {
             id: 'topStatesMap',
             height: window.innerWidth > 800 ? '100%' : '280px',
+            width:'100%'
         },
         stroke: {
             curve: 'smooth',
