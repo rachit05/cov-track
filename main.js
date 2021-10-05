@@ -269,7 +269,7 @@ searchCountryInput.addEventListener('keyup', e => {
 
 let fetchData = async (value) => {
     // let countriesName_url = `http://api.countrylayer.com/v2/name/${value}?access_key=dfc3ec643eccf49204ddc3fb7015cc36`;
-    let countriesName_url = `./json/countries.json`;
+    let countriesName_url = `/json/countries.json`;
     let result = await fetch(countriesName_url);
     let data = await result.json();
     let countryNames = await data.filter(country => country.name.toLowerCase().startsWith(`${value}`)).map(country => `<span class="searchedCountryTag tag is-medium column mr-3 mb-3 has-background-black-bis">${country.name}</span>`);
