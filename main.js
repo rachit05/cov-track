@@ -275,6 +275,7 @@ let fetchData = async (value) => {
     let countryNames = await data.filter(country => country.name.toLowerCase().startsWith(`${value}`)).map(country => `<span class="searchedCountryTag tag is-medium column mr-3 mb-3 has-background-black-bis">${country.name}</span>`);
 
     if(countryNames.length){
+        console.log(countryNames);
         document.getElementById('searchResult').innerHTML = countryNames.join('')
         document.getElementById('searchingLoaderText').innerHTML = 'Done';
 
